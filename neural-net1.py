@@ -90,9 +90,8 @@ for j in range(0,5):
 
   df['RealData']=w_test
   df['PredictedData']=test_out
-  m,b,r_value,p_value,std_err=stats.linregress(df['RealData'],df['PredictedData'])
-  cdet=r_value**2.0
-  print('R cuadrada : {0:1.2f}'.format(cdet))
-  if cdet>=0.8:
-    model.save('ann_model-{0:1.2f}'.format(cdet))
-    pickle.dump(target_scaler,open('scaler_{0:1.2f}.pkl'.format(cdet),'wb'))
+  m,b,rcor,p_value,std_err=stats.linregress(df['RealData'],df['PredictedData'])
+  print('R correlacion : {0:1.2f}'.format(rcor))
+  if rcor>=0.8:
+    model.save('ann_model-{0:1.2f}'.format(rcor))
+    pickle.dump(target_scaler,open('scaler_{0:1.2f}.pkl'.format(rcor),'wb'))
