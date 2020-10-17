@@ -31,13 +31,13 @@ def build_model():
 # DATOS DE ENTRADA
 # para el aprendizaje
 names=['Npxls','Density','Edep_max','EdepT']
-fin0='train/features_neut.csv'
+fin0='train/features_neut.dat'
 x=np.loadtxt(fin0)
 M0=int(np.size(x)/4.0)
 data_x=x.reshape((M0,4))
 
 name=['Energy']
-fin1='train/energy_neut.csv'
+fin1='train/energy_neut.dat'
 y=np.loadtxt(fin1)
 M1=np.size(y)
 data_y=y.reshape(M1,1)
@@ -55,14 +55,14 @@ label_dataset=pd.DataFrame(label_dy,columns=name)
 
 # DATOS DE ENTRADA
 # para la prueba
-fin2='test/features_neut.csv'
+fin2='test/features_neut.dat'
 z=np.loadtxt(fin2)
 M2=int(np.size(z)/4)
 z_test=z.reshape((M2,4))
 z_test_norm=procs.normalize(z_test,norm='l1')
 raw_dataset_test=pd.DataFrame(z_test_norm,columns=names)
 
-fin3='test/energy_neut.csv'
+fin3='test/energy_neut.dat'
 w_test=np.loadtxt(fin3)
 M3=np.size(w_test)
 test_low=w_test<1000
